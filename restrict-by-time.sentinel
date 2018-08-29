@@ -1,9 +1,11 @@
 import "time"
 
+# Note: this totally doesn't work anymore
+
 # Validate time is between 8 AM and 4 PM
 valid_time = rule { time.hour > 8 and time.hour < 16 }
 
 # Validate day is M - Th
-valid_day  = rule { time.day in ["monday", "tuesday", "wednesday", "thursday"] }
+valid_day = rule { time.day in ["monday", "tuesday", "wednesday", "thursday"] }
 
 main = rule { valid_time and valid_day }
