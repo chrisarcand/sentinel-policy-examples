@@ -1,0 +1,28 @@
+# Key/value must be in proper format (such as integer, text, etc.).
+
+required = [
+["port", "\d+"], // port must be int
+["name", "\w+"], // name must be one or more words
+]
+
+
+valid_key = func() {
+for required as v {
+  if request.kv.key is v[0] {
+    return request.kv.value matches v[1]
+  }
+}
+
+
+// Unknown key
+return false
+}
+
+
+is_kv_request = rule {
+request.path matches "/kv" and
+request.method is "PUT"
+}
+
+
+main = rule when is_kv_request { valid_key() }

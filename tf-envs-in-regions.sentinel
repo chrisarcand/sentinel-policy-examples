@@ -1,0 +1,13 @@
+import "env"
+import "tfplan"
+
+# Only provision staging resources in us-west and production resources in us-east
+
+valid_regions = { "staging": "us-west-1", "production": "us-east-1" }
+
+main = rule {
+    all tfplan.config.providers as p {
+        p.type is not "aws" or
+        p.config.region == valid_regions[env.ENV]
+    }
+}

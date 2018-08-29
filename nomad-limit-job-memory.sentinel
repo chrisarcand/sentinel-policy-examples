@@ -1,0 +1,26 @@
+# Limit jobs to only 5 GB of memory resources.
+
+func sum_tasks(tg) {
+count = 0
+for tg.tasks as t { count += t.resources.memory else 0 }
+return count
+}
+
+
+func sum_job(job) {
+count = 0
+for job.task_groups as tg {
+    if tg.count < 0 {
+        fail("unreasonable count value: %d", tg.count)
+    }
+
+
+count += sumTasks(tg) * tg.count
+}
+
+
+return count
+}
+
+
+main = rule { sum_job(job) <= 5000 }
