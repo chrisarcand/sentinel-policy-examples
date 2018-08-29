@@ -1,0 +1,7 @@
+# Sentinel provides inclusion operators (`contains`, `any`, `all`, and
+# more). Sentinel allows some operators to have aliases to promote readability
+# while remaining programmer-familiar, such as `==` which can equivalently be
+# `is`.
+
+numbers = [6, 22, 8, 4, 12]
+main = all numbers as n { n % 2 is 0 }
