@@ -1,1 +1,3 @@
-main = 10 > 5
+# Sentinel only requires that a policy have a main variable that evaluates to a boolean value.
+
+main = true
