@@ -1,11 +1,15 @@
 import "time"
 
-# Note: this totally doesn't work anymore
+current_time = time.now
+days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+current_day = days[current_time.weekday]
 
-# Validate time is between 8 AM and 4 PM
-valid_time = rule { time.hour > 8 and time.hour < 16 }
+# Validate time is between 9 AM and 5 PM
+valid_hour = rule { current_time.hour >= 9 and current_time.hour < 17 }
 
-# Validate day is M - Th
-valid_day = rule { time.day in ["monday", "tuesday", "wednesday", "thursday"] }
+# Validate day is M -Th
+valid_day = rule {
+	current_day in ["monday", "tuesday", "wednesday", "thursday"]
+}
 
-main = rule { valid_time and valid_day }
+main = rule { valid_hour and valid_day }
