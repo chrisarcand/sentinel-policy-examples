@@ -1,3 +1,4 @@
+# THIS EXAMPLE IS UNCONFIRMED (I don't actually know if it works)
 # Limit jobs to only 5 GB of memory resources.
 
 func sum_tasks(tg) {

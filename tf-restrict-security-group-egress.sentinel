@@ -1,13 +1,14 @@
+# THIS EXAMPLE IS UNCONFIRMED (I don't actually know if it works)
 import "tfplan"
 
 # Do not allow AWS security groups to have egress set to 0.0.0.0
 
 main = rule {
-  all tfplan.resources.aws_security_group as _, instances {
-    all instances as _, sg {
-      all sg.applied.egress as egress {
-        egress.cidr_blocks not contains "0.0.0.0/0"
-      }
-    }
-  }
+	all tfplan.resources.aws_security_group as _, instances {
+		all instances as _, sg {
+			all sg.applied.egress as egress {
+				egress.cidr_blocks not contains "0.0.0.0/0"
+			}
+		}
+	}
 }

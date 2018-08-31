@@ -1,17 +1,17 @@
+# THIS EXAMPLE IS UNCONFIRMED (I don't actually know if it works)
 import "tfplan"
 
 # Limit Google Cloud compute resources to anything below n1-standard-16
 
 allowed_machine_types = [
-"n1-standard-1",
-"n1-standard-2",
-"n1-standard-4",
-"n1-standard-8",
+	"n1-standard-1",
+	"n1-standard-2",
+	"n1-standard-4",
+	"n1-standard-8",
 ]
 
-
 main = rule {
-all tfplan.resources as r {
-    r.attr.machine_type in allowed_machine_types
-}
+	all tfplan.resources as r {
+		r.attr.machine_type in allowed_machine_types
+	}
 }

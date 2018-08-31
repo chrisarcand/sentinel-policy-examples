@@ -1,19 +1,18 @@
+# THIS EXAMPLE IS UNCONFIRMED (I don't actually know if it works)
 import "sockaddr"
 
 # When logging into LDAP, Ping MFA is required and the request must come from the internal IP address space.
 
 // We expect logins to come only from our private IP range
 cidrcheck = rule {
-sockaddr.is_contained(request.connection.remote_addr, "10.20.0.0/16")
+	sockaddr.is_contained(request.connection.remote_addr, "10.20.0.0/16")
 }
-
 
 // Require MFA along with LDAP credentials
 ping_valid = rule {
-mfa.ping.is_valid
+	mfa.ping.is_valid
 }
 
-
 main = rule when request.path is "auth/ldap/login" {
-ping_valid and cidrcheck
+	ping_valid and cidrcheck
 }

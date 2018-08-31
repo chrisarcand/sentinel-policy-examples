@@ -1,8 +1,8 @@
+# THIS EXAMPLE IS UNCONFIRMED (I don't actually know if it works)
 import "time"
 
 # Ensure that any token generated more than four hours ago cannot be used on any endpoint.
 
 main = rule {
-time.now.sub(time.load(token.creation_time)) < 4 * time.hour
+	time.now.sub(time.load(token.creation_time)) < 4 * time.hour
 }
-

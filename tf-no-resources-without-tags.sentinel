@@ -1,10 +1,11 @@
+# THIS EXAMPLE IS UNCONFIRMED (I don't actually know if it works)
 import "tfplan"
 
 # Do not allow resources to be provisioned without tags.
 
 main = rule {
-all tfplan.resources as r {
-  r.attr contains "tags" and
-  length(r.attr.tags) > 0
-}
-}
+	all tfplan.resources as r {
+		r.attr contains "tags" and
+			length(r.attr.tags) > 0
+		}
+	}
