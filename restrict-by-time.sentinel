@@ -1,15 +1,13 @@
 import "time"
 
-current_time = time.now
-days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
-current_day = days[current_time.weekday]
+# Requires Sentinel > v0.3.1
 
 # Validate time is between 9 AM and 5 PM
-valid_hour = rule { current_time.hour >= 9 and current_time.hour < 17 }
+valid_hour = rule { time.now.hour >= 9 and time.now.hour < 17 }
 
 # Validate day is M -Th
 valid_day = rule {
-	current_day in ["monday", "tuesday", "wednesday", "thursday"]
+	time.now.weekday_name in ["Monday", "Tuesday", "Wednesday", "Thursday"]
 }
 
 main = rule { valid_hour and valid_day }
