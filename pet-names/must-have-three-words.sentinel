@@ -1,4 +1,4 @@
-# Enforces each pet name to have at least three words
+# Enforces each pet name to have at least three words.
 
 import "tfconfig"
 
